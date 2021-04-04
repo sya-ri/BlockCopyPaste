@@ -49,6 +49,8 @@ class Main : JavaPlugin() {
                             player.sendActionBarMessage("&6&lブロックをコピーしました")
                         }
                         Action.LEFT_CLICK_BLOCK -> {
+                            if (player.level < 1) return@event player.sendActionBarMessage("&c&l貼り付けるのに必要な経験値がありません")
+                            player.level --
                             block.blockData = copyBlockData[uuidPlayer] ?: return@event player.sendActionBarMessage("&c&lブロックをコピーしてください")
                             player.sendActionBarMessage("&a&lブロックを貼り付けました")
                         }
